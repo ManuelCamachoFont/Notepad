@@ -95,11 +95,14 @@ public class Controlador extends WindowAdapter implements ActionListener, ItemLi
 			FileDialog fd = new FileDialog(v.ventana, "Seleccionar archivo", FileDialog.LOAD);
 			fd.setFile("*.txt");
 			fd.setVisible(true);
-			String filename = fd.getDirectory() + fd.getFile();
-			rutaDocumentoActual = filename;
-			String texto = m.abrir(filename);
-			v.txt.setText(texto);
-			textoActual = texto;
+			String archivoSeleccionado = fd.getFile();
+			if (archivoSeleccionado != null) {
+				String filename = fd.getDirectory() + fd.getFile();
+				rutaDocumentoActual = filename;
+				String texto = m.abrir(filename);
+				v.txt.setText(texto);
+				textoActual = texto;
+			}
 		} else if (e.getSource().equals(v.mnuArchG)) {
 			String texto = v.txt.getText();
 			FileDialog fd = new FileDialog(v.ventana, "Seleccionar archivo", FileDialog.SAVE);
@@ -160,8 +163,7 @@ public class Controlador extends WindowAdapter implements ActionListener, ItemLi
 				String texto = v.txt.getText();
 				m.guardar(texto, rutaDocumentoActual);
 				System.exit(0);
-			}
-			else {
+			} else {
 				String texto = v.txt.getText();
 				FileDialog fd = new FileDialog(v.ventana, "Seleccionar archivo", FileDialog.SAVE);
 				fd.setFile("*.txt");
