@@ -1,4 +1,4 @@
-package es.studium.TallerBlocDeNotas;
+package es.studium;
 
 public class Principal {
 
